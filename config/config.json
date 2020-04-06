@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "storage": "./db-managerproject-dev",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "storage": "./db-managerproject-test",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "storage": "./db-managerproject-pro",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "operatorsAliases": false
+  }
+}
