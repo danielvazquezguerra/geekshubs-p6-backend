@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const tasksController = require('../controllers/tasksController');
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/',tasksController.taskFindAll);
+router.get('/:id', tasksController.taskFindById);
+
 
 
 
