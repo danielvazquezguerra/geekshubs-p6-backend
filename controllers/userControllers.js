@@ -55,12 +55,14 @@ const userController = {
         } = req.body;
 
         User.create({
+
             firstname,
             lastname,
             email,
             password,
             tareas,
             tableros
+
         })
         .then(data => {
             res.statusCode = 201;
@@ -70,7 +72,18 @@ const userController = {
             res.statusCode = 500;
             res.json(`error: ${err}`);
         })
+    }, 
+
+    userDelete(req,res) {
+        let { id } = req.params;
+        User.destroy( {where: { id }})
+        .then(data =>{
+            res.statusCode = 201;
+            res.json(data);
+        })
     }
+
+    
 }
 
 module.exports = userController;
