@@ -30,14 +30,17 @@ const TaskController = {
 
     taskCreate(req, res) {
 
-        let { nombre, descripcion } = req.body;
+        let { nombre, descripcion, checklist } = req.body;
         Task.create({
+
                 nombre,
-                descripcion
+                descripcion,
+                checklist
+
             })
             .then(data => {
-                res.json(data);
                 res.statusCode = 201;
+                res.json(data);
             })
             .catch(err => {
                 res.statusCode = 500;
@@ -48,9 +51,9 @@ const TaskController = {
 
     taskUpdate(req, res) {
         let { id } = req.params;
-        let { nombre, descripcion } = req.body;
+        let { nombre, descripcion, checklist } = req.body;
 
-        Task.update({ nombre, descripcion }, { where: { id } })
+        Task.update({ nombre, descripcion, checklist }, { where: { id } })
             .then(data => {
                 res.body(data);
                 res.statusCode = 201;
