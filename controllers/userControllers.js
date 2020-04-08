@@ -21,7 +21,7 @@ const userController = {
         User.findAll( {where: { id }} )
         .then(data => {
             res.statusCode = 201;
-            res.body(data);
+            res.json(data);
         })
         .catch( err => {
             res.statusCode = 500;
@@ -31,7 +31,7 @@ const userController = {
 
     userFindByName(req,res) {
         let { name } = req.params;
-        User.findAll( {where: { name }})
+        User.findAll( {where: { firstname: name }})
         .then(data => {
             res.statusCode = 201;
             res.json(data);
@@ -73,6 +73,36 @@ const userController = {
             res.json(`error: ${err}`);
         })
     }, 
+
+    userUpdate(req,res) {
+        let { id } = req.params;
+        let {
+            firstname,
+            lastname,
+            email,
+            password,
+            tareas,
+            tableros
+        } = req.body;
+
+        User.update({
+            firstname,
+            lastname,
+            email,
+            password,
+            tareas,
+            tableros
+        }, 
+        { where: { id }} )
+        .then(data => {
+            res.statusCode = 201;
+            res.json(data);
+        })
+        .catch(err =>{
+            res.statusCode = 500;
+            res.json(`"error": ${err}`);
+        })
+    },
 
     userDelete(req,res) {
         let { id } = req.params;
